@@ -10,4 +10,19 @@
 <h1>Home page [[ cse471-Anime ]] </h1>
 <h1>Home page- Welcome {{ user.username }} </h1>
 
+{% if request.user.is_authenticated %}
+        <div class="header__user">
+          <a href="{% url 'user-profile' user.id %}">
+            <div >
+              <img src="{{ request.user.avatar.url }}" />
+            </div>
+            <p> See Dashboard </p>
+          </a>
+
+{% else %}
+    
+    <p>Login</p>
+    
+{% endif %}
+
 {% endblock content %}
